@@ -41,6 +41,6 @@ ENV PORT=4000
 EXPOSE 4000
 
 # Al arrancar el contenedor: aplicar migraciones y lanzar el servidor
-CMD sh -c "npx prisma migrate deploy && npm run start"
+CMD sh -c "npx prisma db push && npm run start"
 
 
