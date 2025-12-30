@@ -1,0 +1,633 @@
+/* Estética tipo carta impresa (azules + línea dorada) */
+.sj-admin {
+  min-height: 100vh;
+  background: #f3f6fb;
+  padding: 26px 14px;
+  color: #1b2b4a;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.sj-admin__paper {
+  max-width: 1180px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid rgba(20, 40, 80, 0.10);
+  box-shadow: 0 10px 40px rgba(10, 20, 40, 0.10);
+  border-radius: 18px;
+  padding: 18px 18px 14px;
+}
+
+.sj-admin__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.sj-admin__brandName {
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  color: #233a77;
+  font-size: 18px;
+}
+
+.sj-admin__brandSub {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(27, 43, 74, 0.65);
+}
+
+.sj-admin__actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Regla dorada */
+.sj-admin__rule {
+  margin: 14px 0 16px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d7b45a, transparent);
+  opacity: 0.9;
+}
+
+.sj-admin__grid {
+  display: grid;
+  grid-template-columns: 1fr; /* SIEMPRE una columna */
+  gap: 22px;
+  align-items: start;
+}
+
+.sj-admin__col {
+  display: grid;
+  gap: 18px;
+}
+
+.menuSection {
+  padding: 2px 2px 0;
+}
+
+.menuSection__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.menuSection__title {
+  font-weight: 900;
+  color: #233a77;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.menuSection__headBtns {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.menuSection__rule {
+  margin: 8px 0 10px;
+  height: 2px;
+  background: #d7b45a;
+  opacity: 0.85;
+}
+
+.menuList {
+  display: grid;
+  gap: 10px;
+}
+
+.menuEmpty {
+  padding: 10px 12px;
+  border: 1px dashed rgba(20, 40, 80, 0.18);
+  border-radius: 12px;
+  color: rgba(27, 43, 74, 0.65);
+  font-size: 13px;
+}
+
+.menuRow {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.menuRow__left {
+  display: grid;
+  gap: 4px;
+}
+
+.menuRow__titleLine {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.menuRow__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1b2b4a;
+}
+
+.menuRow__leader {
+  flex: 1;
+  border-bottom: 1px solid rgba(27, 43, 74, 0.20);
+  transform: translateY(-4px);
+}
+
+.menuRow__price {
+  font-size: 14px;
+  font-weight: 800;
+  color: #2a3f7b;
+  white-space: nowrap;
+}
+
+.menuRow__subItalic {
+  font-size: 12.5px;
+  color: rgba(27, 43, 74, 0.65);
+  font-style: italic;
+  margin-top: -2px;
+}
+
+.menuRow.is-compact .menuRow__leader {
+  transform: translateY(-5px);
+}
+
+/* Suplementos */
+.sj-admin__suppWrap {
+  display: grid;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.suppBox {
+  background: #eef3fb;
+  border: 1px solid rgba(20, 40, 80, 0.10);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.suppBox__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.suppBox__title {
+  font-weight: 900;
+  color: #233a77;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+
+.suppBox__btns {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.suppBox__list {
+  margin-top: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+/* Footer alérgenos */
+.sj-admin__footer {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(20, 40, 80, 0.10);
+}
+
+.sj-admin__footerTitle {
+  font-weight: 900;
+  color: #233a77;
+  margin-bottom: 10px;
+}
+
+.sj-admin__allergenLegend {
+  display: flex;
+  gap: 10px 16px;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legendText {
+  font-size: 12.5px;
+  color: rgba(27, 43, 74, 0.80);
+}
+
+/* Botones */
+.btn {
+  border: 1px solid rgba(20, 40, 80, 0.18);
+  background: #ffffff;
+  color: #1b2b4a;
+  padding: 9px 12px;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn:hover {
+  border-color: rgba(35, 58, 119, 0.35);
+}
+
+.btn--primary {
+  background: #233a77;
+  border-color: rgba(35, 58, 119, 0.55);
+  color: #ffffff;
+}
+
+.btn--ghost {
+  background: #f5f8ff;
+}
+
+.btn--danger {
+  background: #fff3f3;
+  border-color: rgba(200, 40, 40, 0.35);
+  color: #8a1d1d;
+}
+
+.iconBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid rgba(20, 40, 80, 0.18);
+  background: #ffffff;
+  color: #233a77;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.iconBtn:hover {
+  border-color: rgba(35, 58, 119, 0.35);
+}
+
+.iconBtn--danger {
+  color: #8a1d1d;
+  background: #fff3f3;
+  border-color: rgba(200, 40, 40, 0.22);
+}
+
+.iconBtn--danger:hover {
+  border-color: rgba(200, 40, 40, 0.45);
+}
+
+/* Segmented controls */
+.seg {
+  display: inline-flex;
+  border: 1px solid rgba(20, 40, 80, 0.18);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.seg__btn {
+  border: 0;
+  background: transparent;
+  padding: 9px 10px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 12px;
+  color: rgba(27, 43, 74, 0.75);
+}
+
+.seg__btn.is-on {
+  background: #233a77;
+  color: #ffffff;
+}
+
+/* Inline alérgenos */
+.aInline {
+  display: inline-flex;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.aDot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  min-width: 22px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: #233a77;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+
+.aDot--mini {
+  height: 18px;
+  min-width: 18px;
+  padding: 0 6px;
+  font-size: 10px;
+}
+
+.aDot--big {
+  height: 28px;
+  min-width: 28px;
+  font-size: 12px;
+}
+
+/* DIALOG */
+.dlg__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 16, 30, 0.35);
+  backdrop-filter: blur(2px);
+}
+
+.dlg {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(860px, calc(100vw - 28px));
+  max-height: calc(100vh - 28px);
+  overflow: auto;
+  background: #ffffff;
+  border: 1px solid rgba(20, 40, 80, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(10, 20, 40, 0.25);
+  z-index: 20;
+}
+
+.dlg__head {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(20, 40, 80, 0.10);
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.dlg__title {
+  font-weight: 1000;
+  color: #233a77;
+  letter-spacing: 0.2px;
+}
+
+.dlg__body {
+  padding: 14px;
+}
+
+.dlg__p {
+  display: grid;
+  gap: 12px;
+}
+
+.dlg__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.dlg__actionsRight {
+  display: inline-flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Form */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.formGrid--3 {
+  grid-template-columns: 220px 1fr 1fr;
+}
+
+@media (max-width: 820px) {
+  .formGrid,
+  .formGrid--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field > span {
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(27, 43, 74, 0.75);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1px solid rgba(20, 40, 80, 0.18);
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: rgba(35, 58, 119, 0.45);
+  box-shadow: 0 0 0 3px rgba(35, 58, 119, 0.12);
+}
+
+.field--small {
+  max-width: 260px;
+}
+
+.fieldHint {
+  font-size: 11px;
+  color: rgba(27, 43, 74, 0.55);
+}
+
+.blockTitle {
+  font-weight: 1000;
+  color: #233a77;
+  margin-top: 4px;
+}
+
+/* selector alérgenos en el form */
+.allergenPick {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 780px) {
+  .allergenPick {
+    grid-template-columns: 1fr;
+  }
+}
+
+.aPick {
+  border: 1px solid rgba(20, 40, 80, 0.18);
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+}
+
+.aPick:hover {
+  border-color: rgba(35, 58, 119, 0.35);
+}
+
+.aPick.is-on {
+  border-color: rgba(35, 58, 119, 0.55);
+  box-shadow: 0 0 0 3px rgba(35, 58, 119, 0.10);
+}
+
+.aPick__txt {
+  display: grid;
+  gap: 2px;
+}
+
+.aPick__top {
+  font-weight: 900;
+  color: #1b2b4a;
+  font-size: 13px;
+}
+
+.aPick__sub {
+  font-size: 12px;
+  color: rgba(27, 43, 74, 0.70);
+  font-style: italic;
+}
+
+/* Alérgenos dialog list */
+.allergenList {
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.allergenRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(20, 40, 80, 0.10);
+  border-radius: 14px;
+  padding: 10px;
+  background: #f7f9ff;
+}
+
+.allergenRow__left {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.allergenRow__txt {
+  display: grid;
+  gap: 2px;
+}
+
+.allergenRow__name {
+  font-weight: 900;
+  color: #1b2b4a;
+}
+
+.allergenRow__sub {
+  font-style: italic;
+  color: rgba(27, 43, 74, 0.70);
+  font-size: 12.5px;
+}
+
+/* ===== Modal: evitar solapes y hacer inputs más compactos ===== */
+.dlg, .dlg * { box-sizing: border-box; }
+.field { min-width: 0; }
+.field input, .field textarea {
+  padding: 8px 10px;      /* más bajo */
+  font-size: 13px;        /* más pequeño */
+  border-radius: 10px;    /* un pelín menos */
+}
+.formGrid { gap: 10px; }  /* menos gap para que no reviente el ancho */
+
+/* ===== DnD ===== */
+.menuSection__headLeft{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.menuRowWrap{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.dragHandle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:32px;
+  height:32px;
+  border-radius:12px;
+  border: 1px solid rgba(20, 40, 80, 0.18);
+  background:#fff;
+  color:#233a77;
+  cursor: grab;
+  user-select:none;
+}
+
+.dragHandle:active{ cursor: grabbing; }
+
+.dragHandle--row{
+  margin-top: 2px;
+}
+
+.menuSection.is-drop,
+.menuRowWrap.is-drop,
+.suppBox.is-drop{
+  outline: 2px dashed rgba(35, 58, 119, 0.55);
+  outline-offset: 6px;
+  border-radius: 14px;
+}
+
+.dropZone{
+  height: 14px;
+  border-radius: 10px;
+}
+
+
+.sj-admin__brandLink {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.sj-admin__brandLink:hover {
+  opacity: 0.92;
+}
+
+.sj-admin__brandLink:active {
+  opacity: 0.85;
+}
+

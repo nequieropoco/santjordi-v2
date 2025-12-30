@@ -1,0 +1,45 @@
+# -------------------------
+# General
+# -------------------------
+.DS_Store
+Thumbs.db
+*.log
+logs/
+
+# Editors
+.vscode/
+.idea/
+
+# Env (NO subir secretos)
+.env
+.env.*
+!.env.example
+
+# -------------------------
+# Node / JS (root + subcarpetas)
+# -------------------------
+node_modules/
+**/node_modules/
+
+# Builds
+dist/
+build/
+**/dist/
+**/build/
+
+# Vite cache
+**/.vite/
+
+# -------------------------
+# Prisma
+# -------------------------
+**/prisma/*.db
+**/prisma/*.db-journal
+
+# -------------------------
+# Docker (si tienes archivos temporales)
+# -------------------------
+*.pid
+
+# Windows "Mark of the Web"
+*:Zone.Identifier
