@@ -198,35 +198,35 @@ app.get("/menu", async (_req, res) => {
   const allergens = await prisma.allergen.findMany({ orderBy: { code: "asc" } });
 
   res.json({
-    departments: departments.map((d) => ({
+    departments: departments.map((d: any) => ({
       id: d.id,
       title: d.title,
       order: d.order,
-      items: d.items.map((it) => ({
+      items: d.items.map((it: any) => ({
         id: it.id,
         departmentId: it.departmentId,
         title: it.title,
         price: Number(it.price),
         order: it.order,
-        allergens: it.allergens.map((x) => x.allergenId),
+        allergens: it.allergens.map((x: any) => x.allergenId),
       })),
     })),
 
-    supplementGroups: supplementGroups.map((g) => ({
+    supplementGroups: supplementGroups.map((g: any) => ({
       id: g.id,
       title: g.title,
       order: g.order,
-      items: g.items.map((si) => ({
+      items: g.items.map((si: any) => ({
         id: si.id,
         groupId: si.groupId,
         title: si.title,
         price: Number(si.price),
         order: si.order,
-        allergens: si.allergens.map((x) => x.allergenId),
+        allergens: si.allergens.map((x: any) => x.allergenId),
       })),
     })),
 
-    allergens: allergens.map((a) => ({
+    allergens: allergens.map((a: any) => ({
       id: a.id,
       code: a.code,
       label: a.label,

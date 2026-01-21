@@ -2,32 +2,19 @@ FROM node:22.12.0-alpine
 
 WORKDIR /app
 
-# deps
+# Copiamos package y prisma ANTES para que prisma pueda generarse
 COPY package*.json ./
-RUN npm ci
-
-# build
-COPY . .
-RUN npm run build
-
-ENV NODE_ENV=production
-EXPOSE 3000
-CMD ["node", "dist/index.js"]
-
-WORKDIR /app
-
-# deps
-COPY package*.json ./
-RUN npm ci
-
-# prisma
 COPY prisma ./prisma
-COPY prisma.config.ts ./prisma.config.ts
+
+RUN npm ci
+
+# Ahora sí copiamos el resto del código
+COPY . .
+
+# Generar Prisma Client (clave)
 RUN npx prisma generate
 
-# build
-COPY tsconfig.json ./
-COPY src ./src
+# Compilar TS
 RUN npm run build
 
 ENV NODE_ENV=production
