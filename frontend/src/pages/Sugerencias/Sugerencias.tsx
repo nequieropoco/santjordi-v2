@@ -13,9 +13,6 @@ function fmtEUR(n: number) {
   return `${v.toFixed(2).replace(".", ",")}€`;
 }
 
-function otherLang(lang: Lang): Lang {
-  return lang === "ca" ? "es" : "ca";
-}
 
 function pickText(t: LangText, lang: Lang) {
   return (t?.[lang] ?? "").trim();

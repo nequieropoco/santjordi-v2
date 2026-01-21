@@ -1,8 +1,12 @@
+import React from "react";
 import { Navigate } from "react-router-dom";
-import * as api from "../../api/sjApi";
 
-export default function RequireAdmin({ children }: { children: JSX.Element }) {
-  const token = api.getToken();
-  if (!token) return <Navigate to="/admin/login" replace />;
-  return children;
+type Props = {
+  children: React.ReactNode;
+};
+
+export default function RequireAdmin({ children }: Props) {
+  const isAdmin = localStorage.getItem("admin") === "true"; 
+
+  return isAdmin ? <>{children}</> : <Navigate to="/admin/login" replace />;
 }
