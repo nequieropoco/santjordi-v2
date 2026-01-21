@@ -1,17 +1,25 @@
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "dev_secret_change_me";
-
-export type AdminTokenPayload = {
-  sub: string; // username
-  role: "admin";
-};
-
-export function signAdminToken(username: string) {
-  const payload: AdminTokenPayload = { sub: username, role: "admin" };
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: "7d" });
+export function signAdminToken(payload: { username: string }) {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) throw new Error("JWT_SECRET missing");
+  return jwt.sign(payload, secret, { expiresIn: "7d" });
 }
 
-export function verifyToken(token: string): AdminTokenPayload {
-  return jwt.verify(token, JWT_SECRET) as AdminTokenPayload;
+export function requireAdmin(req: any, res: any, next: any) {
+  const auth = req.headers.authorization || "";
+  const [, token] = auth.split(" ");
+
+  if (!token) return res.status(401).json({ error: "missing_token" });
+
+  try {
+    const secret = process.env.JWT_SECRET;
+    if (!secret) throw new Error("JWT_SECRET missing");
+
+    const decoded = jwt.verify(token, secret);
+    (req as any).user = decoded;
+    return next();
+  } catch {
+    return res.status(401).json({ error: "invalid_token" });
+  }
 }

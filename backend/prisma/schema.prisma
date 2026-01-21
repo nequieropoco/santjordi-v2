@@ -1,78 +1,40 @@
-// prisma/schema.prisma
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
 }
 
 model Department {
-  id       String @id @default(cuid())
-  titleCa  String
-  titleEs  String
-  order    Int
+  id    String @id @default(uuid())
+  title Json
+  order Int    @default(0)
 
-  items    Item[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  items Item[]
 }
 
 model Item {
-  id           String @id @default(cuid())
+  id           String  @id @default(uuid())
   departmentId String
-  titleCa      String
-  titleEs      String
+  title        Json
   price        Decimal @db.Decimal(10, 2)
-  order        Int
+  order        Int     @default(0)
 
-  department Department   @relation(fields: [departmentId], references: [id], onDelete: Cascade)
-  allergens  ItemAllergen[]
+  department Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
+  allergens ItemAllergen[]
 
-model SupplementGroup {
-  id      String @id @default(cuid())
-  titleCa String
-  titleEs String
-  order   Int
-
-  items   SupplementItem[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model SupplementItem {
-  id      String @id @default(cuid())
-  groupId String
-  titleCa String
-  titleEs String
-  price   Decimal @db.Decimal(10, 2)
-  order   Int
-
-  group     SupplementGroup          @relation(fields: [groupId], references: [id], onDelete: Cascade)
-  allergens SupplementItemAllergen[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  @@index([departmentId])
 }
 
 model Allergen {
-  id      String @id @default(cuid())
-  code    String @unique
-  labelCa String
-  labelEs String
+  id    String @id @default(uuid())
+  code  String @unique
+  label Json
 
   items           ItemAllergen[]
   supplementItems SupplementItemAllergen[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
 
 model ItemAllergen {
@@ -83,6 +45,29 @@ model ItemAllergen {
   allergen Allergen @relation(fields: [allergenId], references: [id], onDelete: Cascade)
 
   @@id([itemId, allergenId])
+  @@index([allergenId])
+}
+
+model SupplementGroup {
+  id    String @id @default(uuid())
+  title Json
+  order Int    @default(0)
+
+  items SupplementItem[]
+}
+
+model SupplementItem {
+  id      String  @id @default(uuid())
+  groupId String
+  title   Json
+  price   Decimal @db.Decimal(10, 2)
+  order   Int     @default(0)
+
+  group SupplementGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  allergens SupplementItemAllergen[]
+
+  @@index([groupId])
 }
 
 model SupplementItemAllergen {
@@ -93,39 +78,5 @@ model SupplementItemAllergen {
   allergen       Allergen       @relation(fields: [allergenId], references: [id], onDelete: Cascade)
 
   @@id([supplementItemId, allergenId])
-}
-
-enum SuggestionSection {
-  FOOD
-  DESSERT
-  OTHER
-}
-
-model SuggestionSheet {
-  id        String   @id @default(cuid())
-  dateFrom  DateTime
-  dateTo    DateTime
-  isActive  Boolean  @default(true)
-
-  items     SuggestionItem[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model SuggestionItem {
-  id      String @id @default(cuid())
-  sheetId String
-
-  sheet   SuggestionSheet   @relation(fields: [sheetId], references: [id], onDelete: Cascade)
-  section SuggestionSection
-  titleCa String
-  titleEs String
-  price   Decimal @db.Decimal(10, 2)
-  order   Int     @default(0)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([sheetId, section, order])
+  @@index([allergenId])
 }
